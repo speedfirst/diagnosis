@@ -1,0 +1,93 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="container">
+
+<h1>权威大表</h1>
+
+	<div class="col-lg-6">
+		<form class="form-horizontal" name="diagnosisForm" ng-submit="processForm(diagnosisForm.$valid)" novalidate>
+		    <div class="form-group" ng-class="{ 'has-error' : diagnosisForm.ph.$invalid && !diagnosisForm.ph.$pristine }" >
+			    <label for="ph" class="col-sm-2 control-label">pH</label>
+			    <div class="col-sm-10">
+			        <input type="text" class="form-control" name="ph" ng-model="formData.ph"  required ng-pattern="/^[+-]?\d+(\.\d*)?$/">
+			    </div>
+			    <span ng-show="diagnosisForm.ph.$error.pattern && !diagnosisForm.ph.$pristine" class="help-block">Not a valid number!</span>
+    			<span ng-show="diagnosisForm.ph.$error.required && !diagnosisForm.ph.$pristine" class="help-block" >This field is required!</span>
+		    </div>
+
+		    <div class="form-group" ng-class="{ 'has-error' : diagnosisForm.paco2.$invalid && !diagnosisForm.paco2.$pristine }" >
+			    <label for="paco2" class="col-sm-2 control-label">PaCO<sub>2</sub></label>
+			    <div class="col-sm-10">
+			        <input type="text" class="form-control" name="paco2" ng-model="formData.paco2" required ng-pattern="/^[+-]?\d+(\.\d*)?$/">
+			    </div>
+			    <span ng-show="diagnosisForm.paco2.$error.pattern && !diagnosisForm.paco2.$pristine" class="help-block">Not a valid number!</span>
+    			<span ng-show="diagnosisForm.paco2.$error.required && !diagnosisForm.paco2.$pristine" class="help-block">This field is required!</span>
+		    </div>
+
+		    <div class="form-group" ng-class="{ 'has-error' : diagnosisForm.beecf.$invalid && !diagnosisForm.beecf.$pristine }" >
+			    <label for="beecf" class="col-sm-2 control-label">BEecf</label>
+			    <div class="col-sm-10">
+			        <input type="text" class="form-control" name="beecf" ng-model="formData.beecf"  required ng-pattern="/^[+-]?\d+(\.\d*)?$/">
+			    </div>
+			    <span ng-show="diagnosisForm.beecf.$error.pattern  && !diagnosisForm.beecf.$pristine" class="help-block">Not a valid number!</span>
+    			<span ng-show="diagnosisForm.beecf.$error.required  && !diagnosisForm.beecf.$pristine" class="help-block">This field is required!</span>
+		    </div>
+
+		    <div class="form-group" ng-class="{ 'has-error' : diagnosisForm.sb.$invalid  && !diagnosisForm.sb.$pristine }" >
+			    <label for="sb" class="col-sm-2 control-label">SB</label>
+			    <div class="col-sm-10">
+			        <input type="text" class="form-control" name="sb" ng-model="formData.sb" required ng-pattern="/^[+-]?\d+(\.\d*)?$/">
+			    </div>
+			    <span ng-show="diagnosisForm.sb.$error.pattern && !diagnosisForm.sb.$pristine" class="help-block">Not a valid number!</span>
+    			<span ng-show="diagnosisForm.sb.$error.required && !diagnosisForm.sb.$pristine" class="help-block">This field is required!</span>
+		    </div>
+
+		    <div class="form-group" ng-class="{ 'has-error' : diagnosisForm.ab.$invalid && !diagnosisForm.ab.$pristine }" >
+			    <label for="ab" class="col-sm-2 control-label">AB (HCO<sub>3</sub><sup>-</sup>)</label>
+			    <div class="col-sm-10">
+			        <input type="text" class="form-control" name="ab" ng-model="formData.ab" required ng-pattern="/^[+-]?\d+(\.\d*)?$/">
+			    </div>
+			    <span ng-show="diagnosisForm.ab.$error.pattern  && !diagnosisForm.ab.$pristine" class="help-block">Not a valid number!</span>
+    			<span ng-show="diagnosisForm.ab.$error.required && !diagnosisForm.ab.$pristine" class="help-block">This field is required!</span>
+		    </div>
+
+		    <div class="form-group" ng-class="{ 'has-error' : diagnosisForm.na.$invalid  && !diagnosisForm.na.$pristine }" >
+			    <label for="na" class="col-sm-2 control-label">Na<sup>+</sup></label>
+			    <div class="col-sm-10">
+			        <input type="text" class="form-control" name="na" ng-model="formData.na" required ng-pattern="/^[+-]?\d+(\.\d*)?$/">
+			    </div>
+			    <span ng-show="diagnosisForm.na.$error.pattern && !diagnosisForm.na.$pristine" class="help-block">Not a valid number!</span>
+    			<span ng-show="diagnosisForm.na.$error.required && !diagnosisForm.na.$pristine" class="help-block">This field is required!</span>
+		    </div>	   
+
+		    <div class="form-group" ng-class="{ 'has-error' : diagnosisForm.cl.$invalid && !diagnosisForm.cl.$pristine }" >
+			    <label for="cl" class="col-sm-2 control-label">Cl<sup>-</sup></label>
+			    <div class="col-sm-10">
+			        <input type="text" class="form-control" name="cl" ng-model="formData.cl" required ng-pattern="/^[+-]?\d+(\.\d*)?$/">
+			    </div>
+			    <span ng-show="diagnosisForm.cl.$error.pattern && !diagnosisForm.cl.$pristine" class="help-block">Not a valid number!</span>
+    			<span ng-show="diagnosisForm.cl.$error.required && !diagnosisForm.cl.$pristine" class="help-block">This field is required!</span>
+		    </div>	
+
+		    <div class="form-group">
+		        <div class="col-sm-offset-2 col-sm-10">
+		          <button type="submit" class="btn btn-success" ng-disabled="diagnosisForm.$invalid">诊断</button>
+		        </div>
+		    </div>
+		</form>
+	</div>
+	<div class="col-lg-6">
+		<div ng-show="errorMsg">
+			<h4>错误</h4>
+			<div class="alert alert-warning" role="alert">{{errorMsg}}</div>
+		</div>
+		<div ng-show="diagnosisResult">
+			<h4>诊断结果</h4>
+			<div class="alert alert-success" role="alert">{{diagnosisResult}}</div>
+		</div>
+		<div ng-show="diagnosisResult">
+			<h4>Debug</h4>
+			<pre>{{diagnosisResp}}</pre>
+		<div>
+	</div>
+</div>
